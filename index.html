@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Newsletter</title>
+</head>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    myPurple: '#36384e',
+                },
+                fontFamily: {
+                    roboto: ['Roboto', 'sans-serif']
+                },
+                maxWidth: {
+                    'wrapper': '1100px',
+                    'myContainer' : '800px',
+                    'imgContainer' : '600px'
+                },
+            }
+        }
+    }
+</script>
+<body>
+    <section class="flex items-center h-screen bg-slate-300 ">
+        <div class="max-w-wrapper w-full mx-auto px-0 md:px-4">
+            <div class="flex justify-center bg-transparent md:bg-myPurple p-0 md:p-8 lg:p-20">
+                <div class="flex flex-wrap-reverse justify-center items-center gap-5 max-w-myContainer p-5 rounded-2xl bg-slate-100">
+                    <div class="grow basis-72 px-0 md:px-5 lg:px-10">
+                        <h1 class="text-4xl md:text-5xl lg:text-5xl font-roboto font-extrabold mb-4">Stay updated</h1>
+                        <p class="text-sm mb-4">Join 60,000+ product managers receiving monthly updates on:</p>
+                        <ul class="list-disc list-inside text-sm mb-4 md:mb-8">
+                            <li>Product discovery and building what matters</li>
+                            <li>Measuring to ensure updates are a success</li>
+                            <li>And much more!</li>
+                        </ul>
+                        <!-- FORM CONTAINER -->
+                        <div class="container">
+                            <form>
+                                <div class="flex flex-col mb-4 w-full">
+                                    <label for="email" class="text-sm font-bold mb-1">Email address</label>
+                                    <input type="text" name="email" id="emailInput" class="px-2 py-3 rounded border border-black" placeholder="email@example.com">
+                                    <p class="text-xs text-red-600 font-bold" id="errorMsg"></p>
+                                </div>
+                                <button id="submitBtn" class="w-full p-3 bg-myPurple hover:bg-gradient-to-r from-red-500 to-orange-300 font-bold text-white rounded">
+                                    Subscribe to monthly newsletter
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grow basis-48 h-full max-h-[250px] md:max-h-[450px]">
+                        <img src="./images/desktop.jpg" alt="" class="h-full w-full object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- modal for the success message -->
+    <div class="fixed inset-0 overflow-y-auto bg-myPurple transition-opacity duration-900 hidden" id="dialog">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="w-[400px] bg-white p-10 rounded-2xl">
+                <!-- success icon -->
+                <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+                        <defs>
+                            <linearGradient id="a" x1="100%" x2="0%" y1="0%" y2="100%">
+                                <stop offset="0%" stop-color="#FF6A3A"/><stop offset="100%" stop-color="#FF527B"/>
+                            </linearGradient>
+                        </defs>
+                        <g fill="none"><circle cx="32" cy="32" r="32" fill="url(#a)"/>
+                            <path stroke="#FFF" stroke-width="4" d="m18.286 34.686 8.334 7.98 19.094-18.285"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="mb-4">
+                    <h2 class="text-4xl font-roboto font-extrabold">Thanks for subscribing!</h2>
+                </div>
+                <div class="mb-8">
+                    <p class="text-sm">
+                        A confirmation email has been sent to <strong id="userEmail"></strong>. Please open it and click the button
+                        inside to confirm your subscription
+                    </p>
+                </div>
+                <button id="closeDialog" class="w-full p-3 bg-myPurple hover:bg-gradient-to-r from-red-500 to-orange-300 text-sm font-semibold text-white rounded">
+                    Dismiss message
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+</body>
+</html>
